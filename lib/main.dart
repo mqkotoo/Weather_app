@@ -24,6 +24,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
+  static const apiKey = '???';
+
   var temp;
   var description;
   var humid; //humidity
@@ -31,7 +33,7 @@ class _HomeState extends State<Home> {
   var windSpeed;
 
   Future getWather () async{
-    http.Response response = await http.get(Uri.parse("http://api.openweathermap.org/data/2.5/weather?q=nagoya,jp&lang=ja&units=metric&appid=b4294ecb7f8ea0e8a6c2ceafb468958e"));
+    http.Response response = await http.get(Uri.parse("http://api.openweathermap.org/data/2.5/weather?q=nagoya,jp&lang=ja&units=metric&appid=$apiKey"));
     var results = jsonDecode(response.body);
     setState(() {
       this.temp = results['main']['temp'];
